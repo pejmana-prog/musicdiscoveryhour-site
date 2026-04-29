@@ -488,6 +488,101 @@ h2 {
   border-color: #1f7a3a;
 }
 
+/* ---- Shop (coming soon) ---- */
+.shop-eyebrow {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1.4px;
+  text-transform: uppercase;
+  color: var(--accent-dark);
+  margin-bottom: 10px;
+}
+
+.shop-title {
+  font-size: 32px;
+  letter-spacing: -0.5px;
+  margin-bottom: 10px;
+}
+
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.hp-field {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.signup-label {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  text-align: left;
+  margin-bottom: 4px;
+}
+
+.signup-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.signup-row input[type="email"] {
+  flex: 1 1 220px;
+  min-width: 0;
+  padding: 12px 16px;
+  font-family: inherit;
+  font-size: 14px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  transition: border-color 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.signup-row input[type="email"]:focus {
+  outline: none;
+  border-color: var(--text);
+}
+
+.signup-row .contact-btn {
+  flex: 0 0 auto;
+}
+
+.signup-fineprint {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-align: center;
+  margin-top: 6px;
+}
+
+.signup-success {
+  text-align: center;
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f7a3a;
+  margin-top: 4px;
+}
+
+.signup-error {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  color: #b3261e;
+  margin-top: 4px;
+}
+
 /* ---- Footer ---- */
 .footer {
   background: var(--text);
