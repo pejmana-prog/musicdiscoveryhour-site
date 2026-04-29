@@ -31,7 +31,7 @@
         </svg>
         Shop
       </a>
-      <a href="mailto:partnerships@musicdiscoveryhour.com?subject=Hello%20MDH">Contact</a>
+      <a href="#contact">Contact</a>
       <a href="#faq">FAQ</a>
       <a href="https://instagram.com/musicdiscoveryhour" target="_blank" rel="noopener">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="url(#igGradNav)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -119,6 +119,19 @@
     </div>
   </section>
 
+  <!-- Contact -->
+  <section class="contact" id="contact">
+    <h2>Get in touch</h2>
+    <p class="contact-sub">Partnerships, submissions, press, or anything else — drop us a line.</p>
+    <div class="contact-card">
+      <div class="contact-email" id="contactEmail">partnerships@musicdiscoveryhour.com</div>
+      <div class="contact-actions">
+        <button type="button" class="contact-btn primary" id="copyEmailBtn">Copy email</button>
+        <a class="contact-btn" href="mailto:partnerships@musicdiscoveryhour.com?subject=Hello%20MDH">Open in mail app</a>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
@@ -127,10 +140,46 @@
       <div class="footer-links">
         <a href="https://instagram.com/musicdiscoveryhour" target="_blank" rel="noopener">Instagram</a>
         <a href="https://open.spotify.com" target="_blank" rel="noopener">Spotify</a>
-        <a href="mailto:partnerships@musicdiscoveryhour.com?subject=Hello%20MDH">Contact</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
   </footer>
 
+  <script>
+    (function () {
+      var btn = document.getElementById('copyEmailBtn');
+      var emailEl = document.getElementById('contactEmail');
+      if (!btn || !emailEl) return;
+      btn.addEventListener('click', function () {
+        var email = emailEl.textContent.trim();
+        var done = function () {
+          var original = btn.textContent;
+          btn.textContent = 'Copied!';
+          btn.classList.add('copied');
+          setTimeout(function () {
+            btn.textContent = original;
+            btn.classList.remove('copied');
+          }, 1600);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(done, function () {
+            fallbackCopy(email); done();
+          });
+        } else {
+          fallbackCopy(email); done();
+        }
+      });
+      function fallbackCopy(text) {
+        var ta = document.createElement('textarea');
+        ta.value = text;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try { document.execCommand('copy'); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
 </body>
 </html>
