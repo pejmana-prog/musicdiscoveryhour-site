@@ -67,9 +67,18 @@
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
             Behind the Curtain
           </a>
+        </div>
+      </div>
+      <div class="nav-drop">
+        <button type="button" class="nav-drop-btn" aria-haspopup="true" aria-expanded="false">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
+          YouTube
+          <svg class="drop-chevron" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
+        <div class="nav-drop-menu">
           <a href="https://www.youtube.com/channel/UCTLJP53Q57KqO9Y9fJAC_dw" target="_blank" rel="noopener">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="#FF0000"><path d="M23.5 6.19a3.02 3.02 0 0 0-2.12-2.14C19.5 3.55 12 3.55 12 3.55s-7.5 0-9.38.5A3.02 3.02 0 0 0 .5 6.19C0 8.07 0 12 0 12s0 3.93.5 5.81a3.02 3.02 0 0 0 2.12 2.14c1.88.5 9.38.5 9.38.5s7.5 0 9.38-.5a3.02 3.02 0 0 0 2.12-2.14C24 15.93 24 12 24 12s0-3.93-.5-5.81zM9.55 15.57V8.43L15.82 12l-6.27 3.57z"/></svg>
-            Behind the Curtain — YouTube
+            Behind the Curtain
           </a>
         </div>
       </div>
@@ -188,25 +197,32 @@
     })();
 
     (function () {
-      var drop = document.querySelector('.nav-drop');
-      if (!drop) return;
-      var btn = drop.querySelector('.nav-drop-btn');
-      btn.addEventListener('click', function (e) {
-        e.stopPropagation();
-        var open = drop.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      var drops = Array.prototype.slice.call(document.querySelectorAll('.nav-drop'));
+      if (!drops.length) return;
+      function closeAll(except) {
+        drops.forEach(function (d) {
+          if (d !== except) {
+            d.classList.remove('open');
+            d.querySelector('.nav-drop-btn').setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+      drops.forEach(function (drop) {
+        var btn = drop.querySelector('.nav-drop-btn');
+        btn.addEventListener('click', function (e) {
+          e.stopPropagation();
+          closeAll(drop);
+          var open = drop.classList.toggle('open');
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        drop.addEventListener('mouseenter', function () { closeAll(drop); });
       });
       document.addEventListener('click', function (e) {
-        if (!drop.contains(e.target)) {
-          drop.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        }
+        var inside = drops.some(function (d) { return d.contains(e.target); });
+        if (!inside) closeAll(null);
       });
       document.addEventListener('keydown', function (e) {
-        if (e.key === 'Escape') {
-          drop.classList.remove('open');
-          btn.setAttribute('aria-expanded', 'false');
-        }
+        if (e.key === 'Escape') closeAll(null);
       });
     })();
   </script>
