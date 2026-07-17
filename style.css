@@ -132,20 +132,40 @@ img {
   border: 1px solid rgba(245, 240, 232, 0.14);
   border-radius: 14px;
   padding: 6px;
-  display: none;
+  display: flex;
   flex-direction: column;
   gap: 2px;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
   z-index: 60;
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.16s ease, transform 0.16s ease, visibility 0s linear 0.3s;
+}
+
+/* Invisible bridge across the gap so hover survives the trip to the menu */
+.nav-drop-menu::before {
+  content: '';
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
 }
 
 .nav-drop.open .nav-drop-menu {
-  display: flex;
+  visibility: visible;
+  opacity: 1;
+  transform: none;
+  transition-delay: 0s;
 }
 
 @media (hover: hover) and (min-width: 721px) {
   .nav-drop:hover .nav-drop-menu {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    transform: none;
+    transition-delay: 0s;
   }
 }
 
