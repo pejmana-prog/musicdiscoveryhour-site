@@ -62,10 +62,11 @@ nav row scrolls horizontally there.
   (ffmpeg `xfade` offset = len−2·fade), cropped ~75% biased right/up to exclude the
   burned-in BTC badge, 1280×720 CRF 27 → ~1MB. Don't replace with a hard-cut loop — the
   camera dollies, so a plain loop jump reads as a glitch.
-- **IG grid covers**: Instagram's API thumbnail is the *wrong frame* (last frame of slide 1).
-  The true cover = **frame zero of the first slide**: `yt-dlp --playlist-items 1` (with the
-  cookies file from the DiscoveryClipper backend) then `ffmpeg -frames:v 1`. Self-host as
-  `assets/ig-N.jpg` — never use IG embed.js (blocked/throttled; already tried and removed).
+- **IG grid covers**: the designed cover (song + artist sticker) is the **LAST frame of the
+  first slide** of each carousel. Get it with `yt-dlp --playlist-items 1` (cookies file from
+  the DiscoveryClipper backend) then `ffmpeg -sseof -0.15 -i slide1.mp4 -frames:v 1`.
+  Self-host as `assets/ig-N.jpg` — never use IG embed.js (blocked/throttled; already tried
+  and removed), and don't use IG's API thumbnail or frame zero (both are the wrong frame).
 
 ## Related but separate
 
