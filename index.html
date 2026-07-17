@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Music Discovery Hour</title>
-  <meta name="description" content="Music Discovery Hour — curated artist spotlights, album picks, playlists, and live sessions. One million music lovers strong.">
+  <meta name="description" content="Music Discovery Hour — curated artist spotlights, album picks, playlists, and the Behind the Curtain live session series.">
   <meta property="og:title" content="Music Discovery Hour">
   <meta property="og:description" content="Curated artist spotlights, album picks, playlists, and live sessions.">
   <meta property="og:type" content="website">
@@ -12,15 +12,22 @@
   <meta property="og:image" content="https://musicdiscoveryhour.com/assets/session-001-thumb.jpg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..900;1,9..144,500..900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500..900;1,9..144,500..900&family=Inter:wght@400;500;600;700;800;900&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <!-- Top Nav -->
   <nav class="topnav">
-    <a href="/" class="nav-brand">
-      <span class="nav-avatar">mdh</span>
+    <a href="/" class="nav-brand" aria-label="Music Discovery Hour home">
+      <svg class="mdh-emblem nav-emblem" viewBox="0 0 200 200" role="img" aria-label="Music Discovery Hour">
+        <circle cx="100" cy="100" r="100" fill="#0e0d0b"/>
+        <g fill="#f5f0e8" font-family="Montserrat, Inter, sans-serif" font-weight="600" font-size="26" letter-spacing="0.5">
+          <text x="37" y="88">music</text>
+          <text x="37" y="122">discovery</text>
+          <text x="37" y="156">hour.</text>
+        </g>
+      </svg>
     </a>
     <div class="nav-links">
       <a href="/">Home</a>
@@ -78,37 +85,24 @@
     </video>
     <div class="vhero-overlay" aria-hidden="true"></div>
     <div class="vhero-content">
-      <div class="eyebrow light">Music Discovery Hour</div>
-      <h1>Your next favorite song starts here.</h1>
-      <p class="vhero-sub">Curated artist spotlights, album picks &amp; playlists — daily, for a community of one million music lovers.</p>
+      <svg class="mdh-emblem vhero-emblem" viewBox="0 0 200 200" role="img" aria-label="Music Discovery Hour">
+        <circle cx="100" cy="100" r="100" fill="#0e0d0b"/>
+        <g fill="#f5f0e8" font-family="Montserrat, Inter, sans-serif" font-weight="600" font-size="26" letter-spacing="0.5">
+          <text x="37" y="88">music</text>
+          <text x="37" y="122">discovery</text>
+          <text x="37" y="156">hour.</text>
+        </g>
+      </svg>
       <div class="vhero-actions">
         <a class="btn btn-solid" href="https://instagram.com/musicdiscoveryhour" target="_blank" rel="noopener">Follow on Instagram</a>
         <a class="btn btn-ghost" href="#sessions">
           <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-          Watch Session 001
+          Watch the Session
         </a>
       </div>
     </div>
-    <div class="vhero-credit" aria-hidden="true">Behind the Curtain — Session 001 · Lee Lewis</div>
+    <div class="vhero-credit" aria-hidden="true">Behind the Curtain · Lee Lewis</div>
   </header>
-
-  <!-- Stats -->
-  <section class="stats" aria-label="Music Discovery Hour by the numbers">
-    <div class="stats-inner">
-      <div class="stat reveal">
-        <div class="stat-num">1M+</div>
-        <div class="stat-label">Followers on Instagram</div>
-      </div>
-      <div class="stat reveal">
-        <div class="stat-num">Daily</div>
-        <div class="stat-label">Curated picks &amp; spotlights</div>
-      </div>
-      <div class="stat reveal">
-        <div class="stat-num">001</div>
-        <div class="stat-label">Live sessions &amp; counting</div>
-      </div>
-    </div>
-  </section>
 
   <!-- Latest Picks -->
   <section class="latest section">
@@ -139,7 +133,7 @@
     <div class="sessions-inner">
       <div class="section-head reveal">
         <div>
-          <div class="eyebrow gold">Behind the Curtain</div>
+          <img class="btc-emblem" src="assets/btc-emblem.png" alt="Behind the Curtain" width="56" height="56" loading="lazy">
           <h2 class="section-title">Live sessions, up close.</h2>
         </div>
         <a class="head-action light" href="https://www.youtube.com/watch?v=SMCJ7mr7Xnc" target="_blank" rel="noopener">Watch on YouTube ↗</a>
@@ -147,19 +141,19 @@
       <p class="sessions-sub reveal">Our live performance series — one artist, one room, one take.</p>
 
       <div class="session-card reveal" id="sessionCard">
-        <button type="button" class="session-poster" id="sessionPlay" aria-label="Play Session 001 with Lee Lewis">
+        <button type="button" class="session-poster" id="sessionPlay" aria-label="Play the featured session with Lee Lewis">
           <img src="assets/session-001-thumb.jpg" alt="Lee Lewis performing at a vintage microphone, surrounded by white curtains" loading="lazy">
           <span class="play-badge" aria-hidden="true">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
           </span>
         </button>
         <div class="session-meta">
-          <div class="session-tag">Session 001</div>
+          <div class="session-tag">Featured Session</div>
           <div class="session-name">Lee Lewis</div>
         </div>
       </div>
 
-      <p class="sessions-note reveal">More sessions in production. Follow along on <a href="https://instagram.com/musicdiscoveryhour" target="_blank" rel="noopener">Instagram</a> for release dates.</p>
+      <p class="sessions-note reveal">More sessions in production. Follow <a href="https://www.instagram.com/behindthecurtainseries" target="_blank" rel="noopener">@behindthecurtainseries</a> for what's next.</p>
     </div>
   </section>
 
@@ -168,7 +162,7 @@
     <div class="section-head reveal">
       <div>
         <div class="eyebrow">On Instagram</div>
-        <h2 class="section-title">The feed that found them first.</h2>
+        <h2 class="section-title">Artists &amp; moments we love.</h2>
       </div>
       <a class="head-action" href="https://instagram.com/musicdiscoveryhour" target="_blank" rel="noopener">@musicdiscoveryhour ↗</a>
     </div>
@@ -195,11 +189,18 @@
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-inner">
-      <span class="footer-brand">MDH</span>
+      <svg class="mdh-emblem footer-emblem" viewBox="0 0 200 200" role="img" aria-label="Music Discovery Hour">
+        <circle cx="100" cy="100" r="100" fill="#0e0d0b"/>
+        <g fill="#f5f0e8" font-family="Montserrat, Inter, sans-serif" font-weight="600" font-size="26" letter-spacing="0.5">
+          <text x="37" y="88">music</text>
+          <text x="37" y="122">discovery</text>
+          <text x="37" y="156">hour.</text>
+        </g>
+      </svg>
       <p>&copy; 2025 Music Discovery Hour. All rights reserved.</p>
       <div class="footer-links">
         <a href="https://instagram.com/musicdiscoveryhour" target="_blank" rel="noopener">Instagram</a>
-        <a href="https://open.spotify.com/playlist/1vbXuh4Rhs85ELSijcpM9p?si=e055b41698974096" target="_blank" rel="noopener">Spotify</a>
+        <a href="https://www.instagram.com/behindthecurtainseries" target="_blank" rel="noopener">Behind the Curtain</a>
         <a href="/shop.html">Shop</a>
         <a href="/contact.html">Contact</a>
       </div>
@@ -208,13 +209,13 @@
 
   <script>
     (function () {
-      // Click-to-play YouTube embed for Session 001
+      // Click-to-play YouTube embed for the featured session
       var play = document.getElementById('sessionPlay');
       if (play) {
         play.addEventListener('click', function () {
           var wrap = document.createElement('div');
           wrap.className = 'session-embed';
-          wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/SMCJ7mr7Xnc?autoplay=1&rel=0" title="Behind the Curtain — Session 001: Lee Lewis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+          wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/SMCJ7mr7Xnc?autoplay=1&rel=0" title="Behind the Curtain — Lee Lewis" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
           play.replaceWith(wrap);
         });
       }
