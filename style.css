@@ -334,12 +334,6 @@ img {
   flex-wrap: wrap;
 }
 
-/* Muted cream eyebrow used in the dark sessions section */
-.eyebrow-credit {
-  color: rgba(251, 248, 242, 0.6);
-  letter-spacing: 1.6px;
-}
-
 /* ---- Buttons ---- */
 .btn {
   display: inline-flex;
@@ -464,22 +458,20 @@ h2 {
 .sessions-inner {
   max-width: var(--content-w);
   margin: 0 auto;
-  padding: 92px 32px 84px;
+  padding: 56px 32px 48px;
 }
 
 .sessions .section-title {
   color: #fbf8f2;
 }
 
-.sessions-sub {
-  color: rgba(251, 248, 242, 0.65);
-  font-size: 15px;
-  margin: -18px 0 36px;
-  max-width: 520px;
+.sessions .section-head {
+  margin-bottom: 24px;
 }
 
 .session-card {
   width: 100%;
+  max-width: 720px;
 }
 
 .session-poster {
@@ -550,7 +542,7 @@ h2 {
   display: flex;
   align-items: baseline;
   gap: 16px;
-  margin-top: 22px;
+  margin-top: 16px;
 }
 
 .session-tag {
@@ -573,7 +565,7 @@ h2 {
 }
 
 .sessions-note {
-  margin-top: 34px;
+  margin-top: 22px;
   font-size: 14px;
   color: rgba(251, 248, 242, 0.6);
 }
@@ -961,7 +953,7 @@ h2 {
   }
 
   .sessions-inner {
-    padding: 64px 20px 56px;
+    padding: 44px 20px 40px;
   }
 
   .section-head {
