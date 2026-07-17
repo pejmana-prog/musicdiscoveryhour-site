@@ -479,8 +479,7 @@ h2 {
 }
 
 .session-card {
-  max-width: 960px;
-  margin: 0 auto;
+  width: 100%;
 }
 
 .session-poster {
@@ -577,9 +576,6 @@ h2 {
   margin-top: 34px;
   font-size: 14px;
   color: rgba(251, 248, 242, 0.6);
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .sessions-note a {
