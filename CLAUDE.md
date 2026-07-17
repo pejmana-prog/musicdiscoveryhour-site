@@ -17,8 +17,10 @@ and partners.
 
 ## Files
 
-- `index.html` — home: floating nav over a full-bleed video hero → Behind the Curtain
-  session section (dark) → Instagram grid → footer
+- `index.html` — home: masthead (centered wordmark over nav links) → full-bleed video hero →
+  split section (left: MDH 3x3 IG cover mosaic, right: Behind the Curtain featured session,
+  sticky on desktop, each side titled with channel icon buttons) → footer (no links,
+  "© Music Discovery Hour, Inc.")
 - `shop.html` — merch coming-soon page with email signup (Netlify Forms, name `shop-signup`)
 - `contact.html` — contact card (copy email / mailto to partnerships@musicdiscoveryhour.com)
 - `style.css` — all styles, shared across pages
