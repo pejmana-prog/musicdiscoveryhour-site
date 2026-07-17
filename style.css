@@ -334,19 +334,10 @@ img {
   flex-wrap: wrap;
 }
 
-.vhero-credit {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 18px;
-  z-index: 2;
-  text-align: center;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: rgba(251, 248, 242, 0.55);
-  padding: 0 24px;
+/* Muted cream eyebrow used in the dark sessions section */
+.eyebrow-credit {
+  color: rgba(251, 248, 242, 0.6);
+  letter-spacing: 1.6px;
 }
 
 /* ---- Buttons ---- */
@@ -478,13 +469,6 @@ h2 {
 
 .sessions .section-title {
   color: #fbf8f2;
-}
-
-.btc-emblem {
-  width: 56px;
-  height: 56px;
-  border-radius: 50%;
-  margin-bottom: 14px;
 }
 
 .sessions-sub {
