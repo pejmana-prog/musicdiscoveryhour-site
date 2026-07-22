@@ -169,7 +169,7 @@ img {
   transition-delay: 0s;
 }
 
-@media (hover: hover) and (min-width: 721px) {
+@media (hover: hover) and (min-width: 921px) {
   .nav-drop:hover .nav-drop-menu {
     visibility: visible;
     opacity: 1;
@@ -277,14 +277,6 @@ img {
   gap: 4px;
   flex-wrap: nowrap;
   max-width: 100%;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -webkit-overflow-scrolling: touch;
-  padding: 2px 0;
-}
-
-.nav-links::-webkit-scrollbar {
-  display: none;
 }
 
 .nav-links a {
@@ -882,6 +874,32 @@ h2 {
   }
 }
 
+@media (max-width: 920px) {
+  /* Links row scrolls; dropdowns escape it as a fixed sheet below the masthead */
+  .nav-links {
+    overflow-x: auto;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    padding: 2px 0;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-drop {
+    position: static;
+  }
+
+  .nav-drop-menu {
+    position: fixed;
+    top: 100px;
+    left: 12px;
+    right: 12px;
+    min-width: 0;
+  }
+}
+
 @media (max-width: 720px) {
   .topnav {
     padding: 12px 14px;
@@ -899,17 +917,8 @@ h2 {
     display: none;
   }
 
-  /* Dropdown escapes the scrollable nav row as a fixed sheet */
-  .nav-drop {
-    position: static;
-  }
-
   .nav-drop-menu {
-    position: fixed;
-    top: 64px;
-    left: 12px;
-    right: 12px;
-    min-width: 0;
+    top: 88px;
   }
 }
 
