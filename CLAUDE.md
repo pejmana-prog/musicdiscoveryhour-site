@@ -50,7 +50,8 @@ Links float over the hero on `index` (`.topnav-overlay`), sit on cream on other 
 
 - **Instagram ⌄** → Music Discovery Hour, Behind the Curtain
 - **YouTube ⌄** → Behind the Curtain (channel UCTLJP53Q57KqO9Y9fJAC_dw)
-- **Spotify ⌄** → Official Playlist, Top Songs of 2025, Top Songs of 2024
+- **Spotify ⌄** → Official Playlist, Top Songs of 2025, Top Songs of 2024,
+  Region Spotlight — Brazil
 
 Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't reintroduce
 the hover-gap bug); tap-toggle everywhere; fixed sheet under the nav on ≤720px because the
