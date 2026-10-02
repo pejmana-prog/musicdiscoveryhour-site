@@ -50,6 +50,7 @@ Links float over the hero on `index` (`.topnav-overlay`), sit on cream on other 
 
 - **Instagram ⌄** → Music Discovery Hour, Behind the Curtain
 - **YouTube ⌄** → Behind the Curtain (channel UCTLJP53Q57KqO9Y9fJAC_dw)
+- **TikTok ⌄** → Behind the Curtain (@btc.series)
 - **Spotify ⌄** → Official Playlist, Top Songs of 2025, Top Songs of 2024,
   Region Spotlight — Brazil
 
