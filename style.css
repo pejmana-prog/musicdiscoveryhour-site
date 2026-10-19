@@ -398,8 +398,9 @@ img {
   padding: 84px 32px;
 }
 
-/* Generic h2 (contact/shop pages) */
-h2 {
+/* Generic page heading (contact/shop/404 h1, section h2) */
+h2,
+.page-title {
   font-family: var(--font-display);
   font-optical-sizing: auto;
   font-size: clamp(26px, 4vw, 40px);

@@ -1,51 +1,54 @@
-# Music Discovery Hour — Website
+# Music Discovery Hour — musicdiscoveryhour.com
 
-Static link-in-bio site for [@musicdiscoveryhour](https://instagram.com/musicdiscoveryhour).
+The public site for [Music Discovery Hour](https://www.instagram.com/musicdiscoveryhour/),
+a music blog on Instagram, and its live-performance series
+[Behind the Curtain](https://www.youtube.com/channel/UCTLJP53Q57KqO9Y9fJAC_dw).
+
+Plain static HTML/CSS/JS. No framework, no build step, no dependencies.
 
 ## Files
 
-- `index.html` — Page markup
-- `style.css` — All styles (earth tones, minimal)
+| File | What it is |
+|------|------------|
+| `index.html` | Home: masthead, full-bleed hero loop, MDH Instagram mosaic + featured Behind the Curtain session, footer |
+| `shop.html` | Merch coming-soon page with an email signup (Netlify Forms, form name `shop-signup`) |
+| `contact.html` | Contact card (copy email / mailto to partnerships@musicdiscoveryhour.com) |
+| `404.html` | Branded not-found page (Netlify serves it automatically) |
+| `style.css` | All styles, shared by every page |
+| `assets/` | Hero loop video + poster, session thumbnail, IG covers (`ig-1..9.jpg`), BTC emblem, favicons |
+| `robots.txt`, `sitemap.xml` | Crawl hints; the sitemap lists the three pretty URLs |
+
+Brand rules, nav structure and the media recipes (hero loop, IG cover frames) are documented
+in [`CLAUDE.md`](CLAUDE.md) — read it before changing copy or layout.
 
 ## Local preview
 
+Any static server works, for example:
+
 ```bash
-npx serve .
+python3 -m http.server 8000
 ```
 
-Then open http://localhost:3000
+Then open http://localhost:8000. Locally the pages are reached as `/shop.html` and
+`/contact.html`; the pretty URLs below only exist on Netlify.
 
-## Before you deploy — quick edits to make
+## Hosting and deploy
 
-Open `index.html` and replace these placeholders with real URLs:
+The site is hosted on **Netlify**, connected to the `main` branch of this repository.
 
-1. **Spotify playlist links** — search for `https://open.spotify.com` and replace with your actual playlist URLs
-2. **Apple Music link** — search for `https://music.apple.com` and replace
-3. **Shop link** — the "Shop MDH Merch" button currently goes to `#shop`. Replace with your store URL when ready (or remove the button)
-4. **Contact form** — replace `YOUR_FORM_ID` in the `<form action="...">` with a real Formspree ID. Sign up free at https://formspree.io, create a form, copy the form ID into the action URL.
+- **Push to `main` = deploy.** Netlify publishes the repo root as-is (no build command) in
+  about 30 seconds to https://musicdiscoveryhour.com.
+- Pull the latest `main` before editing — more than one machine works on this repo.
+- Check a deploy landed with `curl -s https://musicdiscoveryhour.com/ | grep "<something new>"`.
+- Netlify also provides:
+  - **Pretty URLs**: `/shop` → `shop.html`, `/contact` → `contact.html` (canonical and
+    `og:url` tags use the pretty form).
+  - **Forms**: the shop signup posts to Netlify Forms (`shop-signup`); submissions are in the
+    Netlify dashboard under Forms.
+  - **DNS**: `musicdiscoveryhour.com` and the Google Workspace MX records for the
+    `partnerships@` mailbox live in Netlify DNS.
 
-## Deploying to Netlify (recommended — free)
+## Related
 
-1. Go to https://app.netlify.com/drop
-2. Drag the entire `musicdiscoveryhour-site` folder onto the page
-3. Netlify gives you a temporary URL like `random-name.netlify.app`
-4. In Netlify dashboard → Site settings → Domain management → Add custom domain → enter `musicdiscoveryhour.com`
-5. Netlify shows you DNS records to add. In GoDaddy:
-   - Log into GoDaddy → My Products → DNS for musicdiscoveryhour.com
-   - Either:
-     - **Option A (easiest):** Change nameservers to Netlify's nameservers (Netlify will tell you which ones)
-     - **Option B:** Add an A record pointing to Netlify's load balancer IP (`75.2.60.5`) and a CNAME for `www` pointing to your Netlify subdomain
-6. Wait a few minutes for DNS to propagate. Done.
-
-Netlify handles HTTPS automatically.
-
-## Alternative: Vercel
-
-Same process — drag-and-drop at https://vercel.com/new, then connect the domain.
-
-## Future ideas
-
-- Add a real shop (Shopify Lite, Gumroad embed, or Stripe payment links)
-- Newsletter signup (Buttondown / ConvertKit / Mailchimp embed)
-- Individual artist spotlight pages
-- RSS/blog for written reviews
+- The Instagram clips are made with the DiscoveryClipper app (separate repo).
+- Merch storefront (Fourthwall) is in progress; `shop.html` collects emails until it is live.
