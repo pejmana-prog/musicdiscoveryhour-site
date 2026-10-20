@@ -77,12 +77,17 @@ featured poster/meta markup (and the `og:image` on all three pages, which uses t
   It's a seamless crossfade loop: 18s segment, last 1s xfaded into the first 1s
   (`[S+1..S+18][S..S+1] xfade=fade:duration=1:offset=16` → 17s), cropped to 84% biased up
   (`crop=iw*0.84:ih*0.84:iw*0.08:0`) to drop the burned-in "behind the curtain" script in the
-  bottom-left corner, 1280×720 CRF 27 → ~0.5MB. Poster = frame 0 of the loop. Pick a passage
+  bottom-left corner, **1920×1080** CRF 23 → ~1.8MB (720p looked blurry stretched across a
+  2000px-wide hero — always cut from the 4K source, format 313). Poster = frame 0 of the loop. Pick a passage
   that is one continuous wide shot with slow movement and no lip-sync close-up (the hero is
   muted). Don't replace with a hard-cut loop — the camera moves, so a plain loop jump reads as
   a glitch.
-- **Session thumbs**: a clean wide performance frame from the master (`ffmpeg -ss T -frames:v 1
-  -vf scale=1280:720`), badge left in. The YouTube title cards animate artist and song
+- **Session thumbs** (`assets/session-<artist>.jpg`, 1280×720): the same framing for every
+  performance — a clean WIDE shot, performer(s) centred, no title card, badge left in
+  (`ffmpeg -ss T -i master -frames:v 1 -vf scale=1280:720:flags=lanczos -q:v 2`). Frames used:
+  Raveena 2:32, GTA 3:05, FOR MIA 1:48, Lee Lewis 1:05. Use the GRADED source: the
+  "Finals For Color Grading_*" files in ~/Documents are ungraded log masters, so grab from the
+  YouTube upload (1080p is enough) or the Lee Lewis 4K master. The YouTube title cards animate artist and song
   separately, so there is no single frame with both — don't use them.
 - **IG grid covers**: the designed cover card is the **very FINAL frame of the first slide**
   of each carousel (the video ends on the cover). A plain `-sseof -0.15 -frames:v 1` seek
