@@ -10,12 +10,12 @@ Plain static HTML/CSS/JS. No framework, no build step, no dependencies.
 
 | File | What it is |
 |------|------------|
-| `index.html` | Home: masthead, full-bleed hero loop, MDH Instagram mosaic + featured Behind the Curtain session, footer |
+| `index.html` | Home: masthead, full-bleed hero loop, MDH Instagram mosaic + Behind the Curtain sessions player and list, footer |
 | `shop.html` | Merch coming-soon page with an email signup (Netlify Forms, form name `shop-signup`) |
 | `contact.html` | Contact card (copy email / mailto to partnerships@musicdiscoveryhour.com) |
 | `404.html` | Branded not-found page (Netlify serves it automatically) |
 | `style.css` | All styles, shared by every page |
-| `assets/` | Hero loop video + poster, session thumbnail, IG covers (`ig-1..9.jpg`), BTC emblem, favicons |
+| `assets/` | Hero loop video + poster, session thumbnails, IG covers (`ig-1..9.jpg`), BTC emblem, favicons |
 | `robots.txt`, `sitemap.xml` | Crawl hints; the sitemap lists the three pretty URLs |
 
 Brand rules, nav structure and the media recipes (hero loop, IG cover frames) are documented

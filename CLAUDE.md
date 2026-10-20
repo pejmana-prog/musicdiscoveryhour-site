@@ -18,14 +18,14 @@ and partners.
 ## Files
 
 - `index.html` — home: masthead (centered wordmark over nav links) → full-bleed video hero →
-  split section (left: MDH 3x3 IG cover mosaic, right: Behind the Curtain featured session,
-  sticky on desktop, each side titled with channel icon buttons) → footer (no links,
-  "© Music Discovery Hour, Inc.")
+  split section (left: MDH 3x3 IG cover mosaic, right: Behind the Curtain sessions — one
+  player + a list of every performance, sticky on desktop, each side titled with channel icon
+  buttons) → footer (no links, "© Music Discovery Hour, Inc.")
 - `shop.html` — merch coming-soon page with email signup (Netlify Forms, name `shop-signup`)
 - `contact.html` — contact card (copy email / mailto to partnerships@musicdiscoveryhour.com)
 - `style.css` — all styles, shared across pages
-- `assets/` — hero loop video, poster, session thumb, IG covers (`ig-1..4.jpg`), BTC emblem,
-  favicons
+- `assets/` — hero loop video, poster, session thumbs (`session-*.jpg`, 1280x720), IG covers
+  (`ig-1..9.jpg`), BTC emblem, favicons
 
 ## Brand rules (decided by the owner — do not undo)
 
@@ -35,7 +35,8 @@ and partners.
 - **No buzzy claim-y copy** ("the feed that found them first" was rejected — MDH is a music
   blog, it doesn't claim to have discovered artists). Current IG section title:
   "Artists & moments we love."
-- The featured session is labeled **"Featured Session"** (not "Session 001").
+- The featured session is labeled **"Featured Session"** (not "Session 001"). Other
+  sessions picked from the list are labeled "Session".
 - **MDH emblem**: black circle, white lowercase Montserrat wordmark "music discovery hour."
   — implemented as inline SVG (nav on shop/contact, footer). The old "mdh" avatar is retired.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
@@ -58,14 +59,31 @@ Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't r
 the hover-gap bug); tap-toggle everywhere; fixed sheet under the nav on ≤720px because the
 nav row scrolls horizontally there.
 
+## Sessions player (home, right column)
+
+One `<button class="session-poster">` + hidden `.session-embed` (YouTube nocookie iframe,
+created on first play) and a `.session-list` of `.session-item` buttons carrying
+`data-video/artist/song/thumb/alt` (+ `data-featured` on the first). Clicking an item swaps the
+poster/meta; if the player is already open it swaps the iframe src instead, so there is never
+more than one iframe. Order = newest first; add a new performance by prepending an item,
+moving `data-featured` and the `is-current`/`aria-current` markers to it, and updating the
+featured poster/meta markup (and the `og:image` on all three pages, which uses the featured thumb).
+
 ## Media recipes
 
-- **Hero loop**: cut from the 4K master on the owner's Mac
-  (`~/Documents/Most Recent Lee Lewis Files/New Folder With Items/MDH Lee Lewis Final.mov`).
+- **Hero loop** (Oct 2026: Raveena "Blissed Out", wide shot 2:27–2:45 of the YouTube master
+  EBrhz3Px0Js, downloaded at 1440p with the DiscoveryClipper backend's yt-dlp + cookies; the
+  earlier Lee Lewis loop came from the 4K master in `~/Documents/Most Recent Lee Lewis Files/`).
   It's a seamless crossfade loop: 18s segment, last 1s xfaded into the first 1s
-  (ffmpeg `xfade` offset = len−2·fade), cropped ~75% biased right/up to exclude the
-  burned-in BTC badge, 1280×720 CRF 27 → ~1MB. Don't replace with a hard-cut loop — the
-  camera dollies, so a plain loop jump reads as a glitch.
+  (`[S+1..S+18][S..S+1] xfade=fade:duration=1:offset=16` → 17s), cropped to 84% biased up
+  (`crop=iw*0.84:ih*0.84:iw*0.08:0`) to drop the burned-in "behind the curtain" script in the
+  bottom-left corner, 1280×720 CRF 27 → ~0.5MB. Poster = frame 0 of the loop. Pick a passage
+  that is one continuous wide shot with slow movement and no lip-sync close-up (the hero is
+  muted). Don't replace with a hard-cut loop — the camera moves, so a plain loop jump reads as
+  a glitch.
+- **Session thumbs**: a clean wide performance frame from the master (`ffmpeg -ss T -frames:v 1
+  -vf scale=1280:720`), badge left in. The YouTube title cards animate artist and song
+  separately, so there is no single frame with both — don't use them.
 - **IG grid covers**: the designed cover card is the **very FINAL frame of the first slide**
   of each carousel (the video ends on the cover). A plain `-sseof -0.15 -frames:v 1` seek
   lands a few frames early and misses it — instead decode the tail and keep the last frame:

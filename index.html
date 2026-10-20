@@ -10,14 +10,14 @@
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Music Discovery Hour">
   <meta property="og:url" content="https://musicdiscoveryhour.com/">
-  <meta property="og:image" content="https://musicdiscoveryhour.com/assets/session-002-thumb.jpg">
+  <meta property="og:image" content="https://musicdiscoveryhour.com/assets/session-raveena.jpg">
   <meta property="og:image:width" content="1280">
   <meta property="og:image:height" content="720">
-  <meta property="og:image:alt" content="GAWD performing FOR MIA on Behind the Curtain">
+  <meta property="og:image:alt" content="Raveena performing Blissed Out on Behind the Curtain">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Music Discovery Hour">
   <meta name="twitter:description" content="Curated artist spotlights, album picks, playlists, and live sessions.">
-  <meta name="twitter:image" content="https://musicdiscoveryhour.com/assets/session-002-thumb.jpg">
+  <meta name="twitter:image" content="https://musicdiscoveryhour.com/assets/session-raveena.jpg">
   <link rel="canonical" href="https://musicdiscoveryhour.com/">
   <script type="application/ld+json">
   {
@@ -232,17 +232,51 @@
           </div>
 
           <div class="session-card" id="sessionCard">
-            <button type="button" class="session-poster" id="sessionPlay" aria-label="Play the featured session with GAWD">
-              <img src="assets/session-002-thumb.jpg" width="1280" height="720" alt="GAWD performing FOR MIA between rose velvet curtains" loading="lazy">
-              <span class="play-badge" aria-hidden="true">
-                <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-              </span>
-            </button>
+            <div class="session-player">
+              <button type="button" class="session-poster" id="sessionPlay" aria-label="Play Blissed Out by Raveena">
+                <img src="assets/session-raveena.jpg" width="1280" height="720" alt="Raveena performing Blissed Out between rose velvet curtains" loading="lazy" id="sessionPoster">
+                <span class="play-badge" aria-hidden="true">
+                  <svg width="26" height="26" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+                </span>
+              </button>
+              <div class="session-embed" id="sessionEmbed" hidden></div>
+            </div>
             <div class="session-meta">
-              <div class="session-tag">Featured Session</div>
-              <div class="session-name">GAWD</div>
+              <div class="session-tag" id="sessionTag">Featured Session</div>
+              <div class="session-name" id="sessionName">Raveena <span class="session-song">Blissed Out</span></div>
             </div>
           </div>
+
+          <div class="session-list" id="sessionList" role="list" aria-label="Behind the Curtain sessions">
+            <button type="button" class="session-item is-current" role="listitem" aria-current="true"
+              data-video="EBrhz3Px0Js" data-artist="Raveena" data-song="Blissed Out" data-featured="1"
+              data-thumb="assets/session-raveena.jpg" data-alt="Raveena performing Blissed Out between rose velvet curtains">
+              <img src="assets/session-raveena.jpg" width="1280" height="720" alt="" loading="lazy">
+              <span class="session-item-text"><strong>Raveena</strong><span>Blissed Out</span></span>
+            </button>
+            <button type="button" class="session-item" role="listitem"
+              data-video="2JPnbZYMb2o" data-artist="GAWD" data-song="GTA"
+              data-thumb="assets/session-gta.jpg" data-alt="GAWD performing GTA between rose velvet curtains">
+              <img src="assets/session-gta.jpg" width="1280" height="720" alt="" loading="lazy">
+              <span class="session-item-text"><strong>GAWD</strong><span>GTA</span></span>
+            </button>
+            <button type="button" class="session-item" role="listitem"
+              data-video="VNwyOwv8AHc" data-artist="GAWD" data-song="FOR MIA"
+              data-thumb="assets/session-002-thumb.jpg" data-alt="GAWD performing FOR MIA between rose velvet curtains">
+              <img src="assets/session-002-thumb.jpg" width="1280" height="720" alt="" loading="lazy">
+              <span class="session-item-text"><strong>GAWD</strong><span>FOR MIA</span></span>
+            </button>
+            <button type="button" class="session-item" role="listitem"
+              data-video="SMCJ7mr7Xnc" data-artist="Lee Lewis" data-song="Your Love (What I&#39;m Dying From)"
+              data-thumb="assets/session-001-thumb.jpg" data-alt="Lee Lewis performing Your Love in front of white curtains">
+              <img src="assets/session-001-thumb.jpg" width="1600" height="900" alt="" loading="lazy">
+              <span class="session-item-text"><strong>Lee Lewis</strong><span>Your Love (What I'm Dying From)</span></span>
+            </button>
+          </div>
+          <a class="session-more" href="https://www.youtube.com/@BehindTheCurtainSeries" target="_blank" rel="noopener">
+            All sessions on YouTube
+            <span aria-hidden="true">&#8599;</span>
+          </a>
         </div>
       </div>
 
@@ -266,14 +300,56 @@
 
   <script>
     (function () {
-      // Click-to-play YouTube embed for the featured session
+      // Behind the Curtain sessions: one player, pick a session from the list
       var play = document.getElementById('sessionPlay');
-      if (play) {
-        play.addEventListener('click', function () {
-          var wrap = document.createElement('div');
-          wrap.className = 'session-embed';
-          wrap.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/VNwyOwv8AHc?autoplay=1&rel=0" title="Behind the Curtain — GAWD: FOR MIA" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
-          play.replaceWith(wrap);
+      var embed = document.getElementById('sessionEmbed');
+      var poster = document.getElementById('sessionPoster');
+      var tag = document.getElementById('sessionTag');
+      var nameEl = document.getElementById('sessionName');
+      var items = Array.prototype.slice.call(document.querySelectorAll('.session-item'));
+      var current = items[0];
+
+      function embedUrl(id) {
+        return 'https://www.youtube-nocookie.com/embed/' + id + '?autoplay=1&rel=0';
+      }
+      function showEmbed() {
+        var d = current.dataset;
+        embed.innerHTML = '<iframe src="' + embedUrl(d.video) + '" title="Behind the Curtain \u2014 ' +
+          d.artist + ': ' + d.song + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>';
+        play.hidden = true;
+        embed.hidden = false;
+        document.getElementById('sessionList').classList.add('is-playing');
+      }
+      function select(item) {
+        var playing = !embed.hidden;
+        items.forEach(function (it) {
+          var on = it === item;
+          it.classList.toggle('is-current', on);
+          if (on) it.setAttribute('aria-current', 'true'); else it.removeAttribute('aria-current');
+        });
+        current = item;
+        var d = item.dataset;
+        poster.src = d.thumb;
+        poster.alt = d.alt;
+        play.setAttribute('aria-label', 'Play ' + d.song + ' by ' + d.artist);
+        tag.textContent = d.featured ? 'Featured Session' : 'Session';
+        nameEl.innerHTML = '';
+        nameEl.appendChild(document.createTextNode(d.artist + ' '));
+        var song = document.createElement('span');
+        song.className = 'session-song';
+        song.textContent = d.song;
+        nameEl.appendChild(song);
+        if (playing) showEmbed();
+      }
+      if (play && embed) {
+        play.addEventListener('click', showEmbed);
+        items.forEach(function (item) {
+          item.addEventListener('click', function () {
+            if (item === current) { if (embed.hidden) showEmbed(); return; }
+            select(item);
+            var card = document.getElementById('sessionCard');
+            if (card && card.getBoundingClientRect().top < 0) card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
         });
       }
 
