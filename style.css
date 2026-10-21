@@ -977,26 +977,87 @@ h2,
 
 .topnav .nav-links > a,
 .topnav .nav-drop-btn {
-  --btn-bg: rgba(251, 248, 242, 0.9);
+  --btn-bg: transparent;
+  position: relative;
+  isolation: isolate;
   height: 38px;
   padding: 0 15px;
   gap: 7px;
   border-radius: 999px;
-  border: 1px solid rgba(46, 59, 44, 0.22);
-  background: var(--btn-bg);
-  color: var(--green-ink);
-  box-shadow: 0 4px 14px rgba(23, 19, 14, 0.12);
-  transition: background 0.2s, color 0.2s, border-color 0.2s, transform 0.18s;
+  border: 0;
+  color: #fff;
+  /* Soap bubble: clear middle, brighter edge, glossy top-left highlight */
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.12) 22%, rgba(255, 255, 255, 0) 42%),
+    radial-gradient(90% 90% at 72% 88%, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0) 55%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.02) 60%, rgba(255, 255, 255, 0.14) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 8px rgba(255, 255, 255, 0.1),
+    0 0 16px rgba(255, 255, 255, 0.16),
+    0 6px 16px rgba(23, 19, 14, 0.16);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+  transition: box-shadow 0.25s ease, transform 0.25s ease, color 0.2s;
+}
+
+/* Iridescent rim (pink → blue → green → gold), drawn as a 1.5px gradient ring */
+.topnav .nav-links > a::before,
+.topnav .nav-drop-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 200deg,
+    rgba(255, 182, 222, 0.85), rgba(176, 214, 255, 0.85), rgba(190, 255, 214, 0.75),
+    rgba(255, 236, 176, 0.85), rgba(255, 182, 222, 0.85));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.75;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.topnav .nav-links > a svg,
+.topnav .nav-drop-btn svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
 }
 
 .topnav .nav-links > a:hover,
 .topnav .nav-drop-btn:hover,
 .topnav .nav-drop.open .nav-drop-btn {
-  --btn-bg: var(--green-ink);
-  background: var(--btn-bg);
-  color: var(--blush);
-  border-color: var(--green-ink);
-  transform: translateY(-1px);
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.16) 24%, rgba(255, 255, 255, 0) 44%),
+    radial-gradient(90% 90% at 72% 88%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.22) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.55),
+    inset 0 -3px 8px rgba(255, 255, 255, 0.14),
+    0 0 26px rgba(255, 255, 255, 0.34),
+    0 8px 20px rgba(23, 19, 14, 0.18);
+  transform: translateY(-1px) scale(1.04);
+}
+
+.topnav .nav-links > a:hover::before,
+.topnav .nav-drop-btn:hover::before,
+.topnav .nav-drop.open .nav-drop-btn::before {
+  opacity: 1;
+}
+
+/* On the cream pages the bubbles carry dark ink so they stay readable */
+.topnav-page .nav-links > a,
+.topnav-page .nav-drop-btn,
+.topnav-page .nav-links > a:hover,
+.topnav-page .nav-drop-btn:hover,
+.topnav-page .nav-drop.open .nav-drop-btn {
+  color: var(--green-ink);
+  text-shadow: none;
+}
+
+.topnav-page .nav-links > a svg,
+.topnav-page .nav-drop-btn svg {
+  filter: none;
 }
 
 /* Brand icons become single-colour (they follow the text colour) */
@@ -1008,9 +1069,15 @@ h2,
   stroke: currentColor;
 }
 
-/* Apple Music: keep the note cut out of the square */
-.topnav .nav-links > a[href*="music.apple.com"] svg path:last-child {
-  fill: var(--btn-bg);
+/* Apple Music: outlined tile + solid note, so it reads like the other outline icons */
+.topnav .nav-links > a[href*="music.apple.com"] svg path:first-of-type {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 30px;
+}
+
+.topnav .nav-links > a[href*="music.apple.com"] svg path:last-of-type {
+  fill: currentColor;
 }
 
 @media (max-width: 920px) {

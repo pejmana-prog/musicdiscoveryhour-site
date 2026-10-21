@@ -63,12 +63,13 @@ Links float over the hero on `index` (`.topnav-overlay`), sit on cream on other 
 - **Spotify ⌄** → Official Playlist, Top Songs of 2025, Top Songs of 2024,
   Region Spotlight — Brazil
 
-Look: every nav item is a cream button with a hairline green border and green-ink,
-SINGLE-COLOUR icons (brand colours are overridden to `currentColor`; Apple Music keeps its
-note cut-out via `--btn-bg`) — the same style as the sessions channel buttons, which the
-owner chose. Pills with labels on desktop, 38px icon-only circles on phones. Menus are light
-cream. This lives in the "Nav buttons" block at the END of style.css (it overrides the older
-nav rules) — keep it last.
+Look: every nav item is a translucent **soap bubble** (owner's ask — no solid fills):
+clear middle, glossy top-left highlight, 1.5px iridescent conic-gradient rim (masked ring),
+soft white glow that brightens on hover/open. White single-colour icons over the video
+(brand colours overridden to `currentColor`; Apple Music drawn as an outlined tile + note),
+green ink on the cream pages. No backdrop-filter (it lags over video). Pills with labels on
+desktop, 38px icon-only bubbles on phones. Menus are light cream. This lives in the "Nav
+buttons" block at the END of style.css (it overrides the older nav rules) — keep it last.
 
 Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't reintroduce
 the hover-gap bug); tap-toggle everywhere; fixed sheet under the nav on ≤720px because the
