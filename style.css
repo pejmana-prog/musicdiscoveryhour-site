@@ -1572,3 +1572,9 @@ h2,
     0 18px 40px rgba(110, 58, 62, 0.22),
     0 3px 10px rgba(46, 59, 44, 0.12);
 }
+
+/* Play triangle: the icon is already drawn with its visual centre at the middle of the
+   24px box, so the badge needs no extra left padding */
+.play-badge {
+  padding-left: 0;
+}
