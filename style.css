@@ -1540,3 +1540,35 @@ h2,
     padding-bottom: 36px;
   }
 }
+
+
+/* ---- Final (Oct 2026): back to the original dusty blush, with BLACK text ----
+   Owner's call: light blush surface, pure black ink (not grey, not rose-brown). */
+:root {
+  --rose-surface: #f2e6e0;
+  --rose-deep: #e8d6ce;
+  --rose-ink: #000000;
+  --rose-ink-soft: #000000;
+}
+
+.sessions {
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(185, 120, 124, 0.16), transparent 70%),
+    radial-gradient(800px 420px at 90% 100%, rgba(111, 138, 94, 0.14), transparent 70%),
+    var(--rose-surface);
+}
+
+.sess-text span {
+  font-weight: 400;
+}
+
+.sessions-arrows {
+  border-left-color: rgba(0, 0, 0, 0.15);
+}
+
+.sess-media,
+.sess-embed {
+  box-shadow:
+    0 18px 40px rgba(110, 58, 62, 0.22),
+    0 3px 10px rgba(46, 59, 44, 0.12);
+}
