@@ -39,6 +39,7 @@ and partners.
 - **Keep it simple.** Sessions carousel cards show just artist + song — no "Featured
   Session" / "Session 001" badges (gold labels were rejected).
 - **MDH emblem**: black circle, white lowercase Montserrat wordmark "music discovery hour."
+  (the text group has `translate(-3 -13)` so the block sits optically centred — keep it)
   — implemented as inline SVG (nav on shop/contact, footer). The old "mdh" avatar is retired.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
   YouTube channel. MDH main IG is @musicdiscoveryhour.
@@ -61,6 +62,13 @@ Links float over the hero on `index` (`.topnav-overlay`), sit on cream on other 
 - **TikTok ⌄** → Behind the Curtain (@btc.series)
 - **Spotify ⌄** → Official Playlist, Top Songs of 2025, Top Songs of 2024,
   Region Spotlight — Brazil
+
+Look: every nav item is a cream button with a hairline green border and green-ink,
+SINGLE-COLOUR icons (brand colours are overridden to `currentColor`; Apple Music keeps its
+note cut-out via `--btn-bg`) — the same style as the sessions channel buttons, which the
+owner chose. Pills with labels on desktop, 38px icon-only circles on phones. Menus are light
+cream. This lives in the "Nav buttons" block at the END of style.css (it overrides the older
+nav rules) — keep it last.
 
 Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't reintroduce
 the hover-gap bug); tap-toggle everywhere; fixed sheet under the nav on ≤720px because the
