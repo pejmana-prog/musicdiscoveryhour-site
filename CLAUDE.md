@@ -41,8 +41,10 @@ and partners.
   — implemented as inline SVG (nav on shop/contact, footer). The old "mdh" avatar is retired.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
   YouTube channel. MDH main IG is @musicdiscoveryhour.
-- Warm cream palette (`--bg #f5f0e8`, `--ink #17130e`, gold accent) + Fraunces display
-  serif + Inter UI. Keep it.
+- Warm cream palette (`--bg #f5f0e8`, `--ink #17130e`, gold accent) + **Poppins** display
+  (the same family as the IG cover cards — Fraunces serif was retired Oct 2026 because it
+  clashed with the emblem/covers) + Inter UI. Masthead mirrors the emblem: lowercase
+  "music discovery hour.". Keep it.
 
 ## Nav structure
 
