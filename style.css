@@ -1333,12 +1333,13 @@ h2,
 }
 
 
-/* ---- Deep rose surface (Oct 2026): darker so the text can be white ----
-   #8f5459 is the curtains' mid-tone; white = 5.9:1, --rose-soft text = 4.5:1. */
+/* ---- Rose surface (Oct 2026): lit-curtain rose, white text ----
+   #8f5459 was too dark for the owner; #ac6f73 keeps white at ~4:1, so small text is
+   pure white and medium weight. */
 :root {
-  --rose-surface: #8f5459;
-  --rose-deep: #7d4a4f;
-  --rose-soft: #ecdfe0;
+  --rose-surface: #ac6f73;
+  --rose-deep: #a5686c;
+  --rose-soft: #ffffff;
 }
 
 .sessions {
@@ -1416,4 +1417,9 @@ h2,
 
 .footer-emblem {
   box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
+
+.sess-text span {
+  font-weight: 500;
+  opacity: 0.92;
 }

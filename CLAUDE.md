@@ -46,9 +46,9 @@ and partners.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
   YouTube channel. MDH main IG is @musicdiscoveryhour.
 - Colours come from the Behind the Curtain set. Below the hero the surface is **deep rose**
-  (`--rose-surface #8f5459`, the curtains' mid-tone; footer `--rose-deep #7d4a4f`) with WHITE
-  text (5.9:1) and `--rose-soft #ecdfe0` secondary text (4.5:1) — the owner asked for a darker
-  rose so the text could be white (it was light blush + green ink before). Green from the floor
+  (`--rose-surface #ac6f73`, the lit curtains; footer `--rose-deep #a5686c`) with WHITE text
+  (~4:1; small text is pure white, medium weight). History: light blush + green ink → owner
+  wanted white text → #8f5459 was "far too dark" → #ac6f73. Don't go darker. Green from the floor
   shows up as a soft glow. The owner found the black section and the gold text ugly —
   no black backgrounds below the hero, no gold. Cream `--bg #f5f0e8` on shop/contact.
 - Type: **Poppins** display
