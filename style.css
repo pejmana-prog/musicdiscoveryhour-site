@@ -420,7 +420,12 @@ h2,
 
 /* ---- Split: MDH grid x Behind the Curtain ---- */
 .split {
-  background: var(--ink);
+  background-color: var(--ink);
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"),
+    radial-gradient(1200px 540px at 26% -4%, rgba(251, 248, 242, 0.06), transparent 62%),
+    radial-gradient(1000px 640px at 88% 14%, rgba(173, 109, 115, 0.11), transparent 64%),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0) 68%, rgba(0, 0, 0, 0.32) 100%);
   color: #fbf8f2;
 }
 
@@ -491,6 +496,24 @@ h2,
 
 .session-card {
   width: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+/* Ambient light behind the featured video — picks up the curtain tones */
+.session-card::before {
+  content: '';
+  position: absolute;
+  top: -7%;
+  left: -7%;
+  right: -7%;
+  height: 72%;
+  background:
+    radial-gradient(60% 70% at 32% 42%, rgba(173, 109, 115, 0.4), transparent 72%),
+    radial-gradient(55% 65% at 74% 52%, rgba(200, 168, 124, 0.26), transparent 74%);
+  filter: blur(46px);
+  z-index: -1;
+  pointer-events: none;
 }
 
 .session-poster {
@@ -498,7 +521,7 @@ h2,
   display: block;
   width: 100%;
   aspect-ratio: 16 / 9;
-  border: none;
+  border: 1px solid rgba(245, 240, 232, 0.14);
   border-radius: 18px;
   overflow: hidden;
   cursor: pointer;
@@ -545,9 +568,10 @@ h2,
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 9;
+  border: 1px solid rgba(245, 240, 232, 0.14);
   border-radius: 18px;
   overflow: hidden;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
 }
 
 .session-embed iframe {
@@ -614,7 +638,7 @@ h2,
   padding: 8px 12px 8px 8px;
   border: 1px solid rgba(245, 240, 232, 0.12);
   border-radius: 14px;
-  background: transparent;
+  background: rgba(245, 240, 232, 0.035);
   color: #fbf8f2;
   font-family: inherit;
   text-align: left;
@@ -623,9 +647,10 @@ h2,
 }
 
 .session-item:hover {
-  background: rgba(245, 240, 232, 0.06);
-  border-color: rgba(245, 240, 232, 0.28);
+  background: rgba(245, 240, 232, 0.07);
+  border-color: rgba(245, 240, 232, 0.3);
   transform: translateY(-1px);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35);
 }
 
 .session-item.is-current {
@@ -633,6 +658,7 @@ h2,
   border-color: var(--accent);
   cursor: default;
   transform: none;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.35), 0 0 30px rgba(200, 168, 124, 0.12);
 }
 
 .session-item img {
@@ -642,6 +668,8 @@ h2,
   border-radius: 8px;
   object-fit: cover;
   background: #000;
+  border: 1px solid rgba(245, 240, 232, 0.12);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
 }
 
 .session-item-text {
@@ -707,6 +735,18 @@ h2,
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--bg-warm);
+  border: 1px solid rgba(245, 240, 232, 0.1);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.38), 0 2px 8px rgba(0, 0, 0, 0.3);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.ig-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(200, 168, 124, 0.5);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.5),
+    0 4px 12px rgba(0, 0, 0, 0.35),
+    0 0 44px rgba(200, 168, 124, 0.14);
 }
 
 .ig-card img {
