@@ -1578,3 +1578,118 @@ h2,
 .play-badge {
   padding-left: 0;
 }
+
+/* ---- Footer joins the section (same blush), and the gap above it closes ---- */
+.footer {
+  background: var(--rose-surface);
+  padding-top: 6px;
+}
+
+.sessions {
+  padding-bottom: 26px;
+}
+
+@media (max-width: 600px) {
+  .sessions {
+    padding-bottom: 14px;
+  }
+
+  .footer {
+    padding-top: 2px;
+  }
+}
+
+/* ---- Text in the bubble language ---- */
+
+/* Title: glossy black — a light band across the top of the letters, plus the bubbles' halo */
+.sessions-title {
+  background: linear-gradient(180deg,
+    #4a4a4a 0%, #1c1c1c 38%, #000 52%, #000 78%, #262626 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: #000;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.85))
+    drop-shadow(0 0 14px rgba(255, 255, 255, 0.75));
+}
+
+/* Card captions: artist + song in a small bubble pill */
+.sess-text {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  max-width: 100%;
+  margin-top: 12px;
+  padding: 7px 14px 7px 13px;
+  border-radius: 999px;
+  background:
+    radial-gradient(120% 160% at 22% 10%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.32) 30%, rgba(255, 255, 255, 0) 55%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.12) 60%, rgba(255, 255, 255, 0.42) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.8),
+    inset 0 -3px 8px rgba(255, 255, 255, 0.14),
+    0 0 14px rgba(255, 255, 255, 0.45),
+    0 4px 12px rgba(110, 58, 62, 0.12);
+}
+
+.sess-text::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 200deg,
+    rgba(255, 182, 222, 0.9), rgba(176, 214, 255, 0.9), rgba(190, 255, 214, 0.8),
+    rgba(255, 236, 176, 0.9), rgba(255, 182, 222, 0.9));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.sess-text strong {
+  font-size: 16px;
+}
+
+.sess-text span {
+  font-size: 13px;
+}
+
+/* Seamless bottom: the page itself is blush under the section + footer, the footer is
+   see-through, and the green glow fades out before the section's bottom edge */
+body:has(.sessions) {
+  background: var(--rose-surface);
+}
+
+.footer {
+  background: transparent;
+}
+
+.sessions {
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(185, 120, 124, 0.16), transparent 70%),
+    radial-gradient(760px 360px at 88% 45%, rgba(111, 138, 94, 0.12), transparent 70%),
+    var(--rose-surface);
+}
+
+/* Stronger gloss on the title so the shine reads at normal size */
+.sessions-title {
+  background: linear-gradient(180deg,
+    #7a7a7a 0%, #3a3a3a 30%, #000 50%, #000 80%, #333 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  filter:
+    drop-shadow(0 1px 0 rgba(255, 255, 255, 0.9))
+    drop-shadow(0 0 18px rgba(255, 255, 255, 0.9));
+}
+
+/* Shine band placed over the lowercase letters (x-height sits ~40–80% of the line box) */
+.sessions-title {
+  background: linear-gradient(180deg,
+    #1a1a1a 0%, #3c3c3c 34%, #8c8c8c 45%, #2a2a2a 58%, #000 72%, #000 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}

@@ -81,7 +81,11 @@ icons, carousel arrows, the thumbnails' play button and the dropdown menus (a ti
 share it. Ink rule: white over video/photos; black ink (`--rose-ink`) on the blush surface; green
 ink (`--green-ink`) on the cream shop/contact pages. These
 overrides are in the "One look for the whole site" block at the very end of style.css.
-Footer is a slim one-line strip (26px emblem + copyright; on phones a 32px hairline with an 18px
+Text joins the bubble language too: the section title is glossy black (gradient clipped
+to the text with the shine band over the lowercase letters + a white halo), and each card's
+artist/song sits in a small bubble pill with the iridescent rim.
+Footer is a slim one-line strip on the SAME blush as the section (see-through over a blush
+page background, no colour change, minimal gap above it) (26px emblem + copyright; on phones a 32px hairline with an 18px
 emblem and "All rights reserved." hidden via `.rights`) — the owner found the big footer
 wasted space; don't grow it back.
 
