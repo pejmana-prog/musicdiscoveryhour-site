@@ -1070,6 +1070,38 @@ h2,
   .nav-drop-menu {
     top: 88px;
   }
+
+  /* Platform tabs collapse to their icons so the whole row fits a phone.
+     font-size: 0 hides the label visually but keeps it as the accessible name. */
+  .nav-links {
+    justify-content: safe center;
+    gap: 0;
+  }
+
+  .nav-drop-btn,
+  .nav-links > a[href*="music.apple.com"] {
+    font-size: 0;
+    gap: 0;
+    padding: 8px 8px;
+  }
+
+  .nav-links > a[href="/shop.html"] svg {
+    display: none;
+  }
+
+  .nav-drop-btn svg:not(.drop-chevron),
+  .nav-links > a[href*="music.apple.com"] svg {
+    width: 19px;
+    height: 19px;
+  }
+
+  .nav-drop-btn .drop-chevron {
+    display: none;
+  }
+
+  .nav-links > a {
+    padding: 8px 8px;
+  }
 }
 
 @media (max-width: 600px) {
