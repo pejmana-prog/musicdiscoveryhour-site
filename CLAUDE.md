@@ -17,10 +17,12 @@ and partners.
 
 ## Files
 
-- `index.html` — home: masthead (centered wordmark over nav links) → full-bleed video hero →
-  split section (left: MDH 3x3 IG cover mosaic, right: Behind the Curtain sessions — one
-  player + a list of every performance, sticky on desktop, each side titled with channel icon
-  buttons) → footer (no links, "© Music Discovery Hour, Inc.")
+- `index.html` — home: masthead (lowercase wordmark over nav links; icon-only on phones) →
+  full-bleed video hero → ONE section: the Behind the Curtain sessions carousel (swipeable
+  scroll-snap track, arrows on desktop, tap a card to play it in place, one at a time) →
+  footer (no links, "© Music Discovery Hour, Inc."). The MDH Instagram posts grid was
+  removed Oct 2026 on purpose (posts go stale and don't drive the business) — don't re-add it.
+  To add a session: copy an `<li class="sess-card">` (newest first) and its 1280x720 thumb.
 - `shop.html` — merch coming-soon page with email signup (Netlify Forms, name `shop-signup`)
 - `contact.html` — contact card (copy email / mailto to partnerships@musicdiscoveryhour.com)
 - `style.css` — all styles, shared across pages
@@ -33,15 +35,18 @@ and partners.
 - **No taglines** in the hero ("Your next favorite song…" was rejected as cheesy).
   The hero is the video, the floating nav links, nothing else.
 - **No buzzy claim-y copy** ("the feed that found them first" was rejected — MDH is a music
-  blog, it doesn't claim to have discovered artists). Current IG section title:
-  "Artists & moments we love."
-- The featured session is labeled **"Featured Session"** (not "Session 001"). Other
-  sessions picked from the list are labeled "Session".
+  blog, it doesn't claim to have discovered artists).
+- **Keep it simple.** Sessions carousel cards show just artist + song — no "Featured
+  Session" / "Session 001" badges (gold labels were rejected).
 - **MDH emblem**: black circle, white lowercase Montserrat wordmark "music discovery hour."
   — implemented as inline SVG (nav on shop/contact, footer). The old "mdh" avatar is retired.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
   YouTube channel. MDH main IG is @musicdiscoveryhour.
-- Warm cream palette (`--bg #f5f0e8`, `--ink #17130e`, gold accent) + **Poppins** display
+- Colours come from the Behind the Curtain set: **blush** (`--blush #f2e6e0`, from the rose
+  curtains) backgrounds and **deep green** text (`--green-ink #2e3b2c`, from the floor), rose
+  accent (`--accent-dark #8e4a51`). The owner found the black section and the gold text ugly —
+  no black backgrounds below the hero, no gold. Cream `--bg #f5f0e8` on shop/contact.
+- Type: **Poppins** display
   (the same family as the IG cover cards — Fraunces serif was retired Oct 2026 because it
   clashed with the emblem/covers) + Inter UI. Masthead mirrors the emblem: lowercase
   "music discovery hour.". Keep it.
