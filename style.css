@@ -1693,3 +1693,47 @@ body:has(.sessions) {
   -webkit-background-clip: text;
   background-clip: text;
 }
+
+/* ---- Raised titles (replaces the gloss strip, which read as a flaw) ----
+   Solid letters with a lit top edge and a soft shadow underneath, so they sit on the page. */
+.sessions-title {
+  background: none;
+  -webkit-background-clip: border-box;
+  background-clip: border-box;
+  -webkit-text-fill-color: currentColor;
+  color: #000;
+  filter: none;
+  text-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 1px rgba(0, 0, 0, 0.18),
+    0 3px 6px rgba(70, 35, 40, 0.18),
+    0 8px 18px rgba(70, 35, 40, 0.12);
+}
+
+.topnav-overlay .nav-wordmark {
+  text-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.35),
+    0 1px 1px rgba(0, 0, 0, 0.35),
+    0 3px 6px rgba(0, 0, 0, 0.3),
+    0 8px 18px rgba(0, 0, 0, 0.22);
+}
+
+/* ---- Tighter section: less empty space above the title and below the header ---- */
+.sessions {
+  padding-top: 34px;
+}
+
+.sessions-head {
+  margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+  .sessions {
+    padding-top: 22px;
+  }
+
+  .sessions-head {
+    margin-bottom: 14px;
+    gap: 12px;
+  }
+}

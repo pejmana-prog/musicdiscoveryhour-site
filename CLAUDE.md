@@ -81,8 +81,9 @@ icons, carousel arrows, the thumbnails' play button and the dropdown menus (a ti
 share it. Ink rule: white over video/photos; black ink (`--rose-ink`) on the blush surface; green
 ink (`--green-ink`) on the cream shop/contact pages. These
 overrides are in the "One look for the whole site" block at the very end of style.css.
-Text joins the bubble language too: the section title is glossy black (gradient clipped
-to the text with the shine band over the lowercase letters + a white halo), and each card's
+Text joins the bubble language too: the section title (black) and the masthead wordmark (white)
+are RAISED: solid letters, lit top edge, soft shadow beneath. A gradient "gloss strip" across
+the letters was tried and rejected ("just looks off") — don't bring it back, and each card's
 artist/song sits in a small bubble pill with the iridescent rim.
 Footer is a slim one-line strip on the SAME blush as the section (see-through over a blush
 page background, no colour change, minimal gap above it) (26px emblem + copyright; on phones a 32px hairline with an 18px
