@@ -41,11 +41,15 @@ and partners.
 - **MDH emblem**: black circle, white lowercase Montserrat wordmark "music discovery hour."
   (the text group has `translate(-3 -13)` so the block sits optically centred — keep it)
   — implemented as inline SVG (nav on shop/contact, footer). The old "mdh" avatar is retired.
+- **Brand spelling:** visible text always writes it **"behind the curtain."** — lowercase, with the
+  period (section title, menu labels). Title-case is fine only in alt/aria/meta text.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
   YouTube channel. MDH main IG is @musicdiscoveryhour.
-- Colours come from the Behind the Curtain set: **blush** (`--blush #f2e6e0`, from the rose
-  curtains) backgrounds and **deep green** text (`--green-ink #2e3b2c`, from the floor), rose
-  accent (`--accent-dark #8e4a51`). The owner found the black section and the gold text ugly —
+- Colours come from the Behind the Curtain set. Below the hero the surface is **deep rose**
+  (`--rose-surface #8f5459`, the curtains' mid-tone; footer `--rose-deep #7d4a4f`) with WHITE
+  text (5.9:1) and `--rose-soft #ecdfe0` secondary text (4.5:1) — the owner asked for a darker
+  rose so the text could be white (it was light blush + green ink before). Green from the floor
+  shows up as a soft glow. The owner found the black section and the gold text ugly —
   no black backgrounds below the hero, no gold. Cream `--bg #f5f0e8` on shop/contact.
 - Type: **Poppins** display
   (the same family as the IG cover cards — Fraunces serif was retired Oct 2026 because it
@@ -73,7 +77,8 @@ buttons" block at the END of style.css (it overrides the older nav rules) — ke
 The bubble is the SITE-WIDE button language (Oct 2026, owner asked to standardise): channel
 icons, carousel arrows, the thumbnails' play button and the dropdown menus (a tinted bubble
 "gel" pane: dark-rose tint over video so text stays readable, white gel on cream pages) all
-share it. Ink rule: white over video/photos, green ink (`--green-ink`) on blush/cream. These
+share it. Ink rule: white over video/photos and on the rose surface, green ink (`--green-ink`) on the
+cream shop/contact pages. These
 overrides are in the "One look for the whole site" block at the very end of style.css.
 Footer is a slim one-line strip (26px emblem + copyright) — the owner found the big footer
 wasted space; don't grow it back.

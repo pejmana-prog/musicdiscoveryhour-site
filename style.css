@@ -1331,3 +1331,89 @@ h2,
   font-size: 11px;
   color: var(--green-muted);
 }
+
+
+/* ---- Deep rose surface (Oct 2026): darker so the text can be white ----
+   #8f5459 is the curtains' mid-tone; white = 5.9:1, --rose-soft text = 4.5:1. */
+:root {
+  --rose-surface: #8f5459;
+  --rose-deep: #7d4a4f;
+  --rose-soft: #ecdfe0;
+}
+
+.sessions {
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(255, 220, 222, 0.16), transparent 70%),
+    radial-gradient(800px 420px at 90% 100%, rgba(111, 138, 94, 0.22), transparent 70%),
+    var(--rose-surface);
+  color: #fff;
+}
+
+.sessions-title,
+.sess-text strong {
+  color: #fff;
+}
+
+.sess-text span {
+  color: var(--rose-soft);
+}
+
+.sessions-arrows {
+  border-left-color: rgba(255, 255, 255, 0.25);
+}
+
+.sess-media,
+.sess-embed {
+  box-shadow:
+    0 18px 40px rgba(40, 18, 22, 0.35),
+    0 3px 10px rgba(40, 18, 22, 0.2);
+}
+
+/* Bubbles on the rose surface carry white ink, like over the video */
+.chan-icon,
+.sess-arrow,
+.chan-icon:hover,
+.sess-arrow:hover:not(:disabled) {
+  color: #fff;
+}
+
+.chan-icon,
+.sess-arrow {
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.5) 0%, rgba(255, 255, 255, 0.12) 24%, rgba(255, 255, 255, 0) 44%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.03) 60%, rgba(255, 255, 255, 0.18) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.45),
+    inset 0 -3px 8px rgba(255, 255, 255, 0.1),
+    0 0 16px rgba(255, 255, 255, 0.16),
+    0 6px 16px rgba(40, 18, 22, 0.2);
+}
+
+.chan-icon svg,
+.sess-arrow svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+}
+
+.chan-icon:hover,
+.sess-arrow:hover:not(:disabled) {
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.16) 26%, rgba(255, 255, 255, 0) 46%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.08) 55%, rgba(255, 255, 255, 0.26) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.55),
+    0 0 26px rgba(255, 255, 255, 0.32),
+    0 8px 20px rgba(40, 18, 22, 0.22);
+}
+
+/* Footer strip: one shade deeper, white ink */
+.footer {
+  background: var(--rose-deep);
+}
+
+.footer p {
+  color: var(--rose-soft);
+}
+
+.footer-emblem {
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.25);
+}
