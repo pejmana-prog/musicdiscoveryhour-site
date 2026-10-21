@@ -1423,3 +1423,120 @@ h2,
   font-weight: 500;
   opacity: 0.92;
 }
+
+
+/* ---- Light dusty pink surface (Oct 2026): 40% lighter than #ac6f73 ----
+   White can't be read on it (2.1:1), so ink is deep rose-brown from the curtain shadows:
+   --rose-ink #3d2326 = 6.7:1, --rose-ink-soft #5a3639 = 4.9:1. */
+:root {
+  --rose-surface: #cda9ab;
+  --rose-deep: #c59fa2;
+  --rose-ink: #3d2326;
+  --rose-ink-soft: #5a3639;
+}
+
+.sessions {
+  background:
+    radial-gradient(900px 420px at 15% 0%, rgba(255, 255, 255, 0.22), transparent 70%),
+    radial-gradient(800px 420px at 90% 100%, rgba(111, 138, 94, 0.16), transparent 70%),
+    var(--rose-surface);
+  color: var(--rose-ink);
+}
+
+.sessions-title,
+.sess-text strong {
+  color: var(--rose-ink);
+}
+
+.sess-text span {
+  color: var(--rose-ink-soft);
+  opacity: 1;
+}
+
+.sessions-arrows {
+  border-left-color: rgba(61, 35, 38, 0.2);
+}
+
+.sess-media,
+.sess-embed {
+  box-shadow:
+    0 18px 40px rgba(90, 45, 50, 0.25),
+    0 3px 10px rgba(90, 45, 50, 0.14);
+}
+
+/* Bubbles on the light pink: dark ink, brighter gloss so they still read as bubbles */
+.chan-icon,
+.sess-arrow,
+.chan-icon:hover,
+.sess-arrow:hover:not(:disabled) {
+  color: var(--rose-ink);
+}
+
+.chan-icon svg,
+.sess-arrow svg {
+  filter: none;
+}
+
+.chan-icon,
+.sess-arrow {
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.3) 26%, rgba(255, 255, 255, 0) 46%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.08) 60%, rgba(255, 255, 255, 0.42) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.8),
+    inset 0 -3px 8px rgba(255, 255, 255, 0.14),
+    0 0 16px rgba(255, 255, 255, 0.4),
+    0 5px 14px rgba(90, 45, 50, 0.14);
+}
+
+.chan-icon:hover,
+.sess-arrow:hover:not(:disabled) {
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.42) 28%, rgba(255, 255, 255, 0) 48%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.2) 55%, rgba(255, 255, 255, 0.6) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.9),
+    0 0 24px rgba(255, 255, 255, 0.7),
+    0 6px 16px rgba(90, 45, 50, 0.16);
+}
+
+.footer {
+  background: var(--rose-deep);
+}
+
+.footer p {
+  color: var(--rose-ink-soft);
+}
+
+.footer-emblem {
+  box-shadow: none;
+}
+
+/* Phones: the footer is a hairline strip */
+@media (max-width: 600px) {
+  .footer {
+    padding: 7px 12px;
+  }
+
+  .footer-inner {
+    gap: 7px;
+  }
+
+  .footer-emblem {
+    width: 18px;
+    height: 18px;
+  }
+
+  .footer p {
+    font-size: 10px;
+    white-space: nowrap;
+  }
+
+  .footer .rights {
+    display: none;
+  }
+
+  .sessions {
+    padding-bottom: 36px;
+  }
+}

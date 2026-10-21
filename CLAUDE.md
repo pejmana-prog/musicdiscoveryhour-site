@@ -45,10 +45,12 @@ and partners.
   period (section title, menu labels). Title-case is fine only in alt/aria/meta text.
 - **Behind the Curtain** is its own brand: separate IG (@behindthecurtainseries) and
   YouTube channel. MDH main IG is @musicdiscoveryhour.
-- Colours come from the Behind the Curtain set. Below the hero the surface is **deep rose**
-  (`--rose-surface #ac6f73`, the lit curtains; footer `--rose-deep #a5686c`) with WHITE text
-  (~4:1; small text is pure white, medium weight). History: light blush + green ink → owner
-  wanted white text → #8f5459 was "far too dark" → #ac6f73. Don't go darker. Green from the floor
+- Colours come from the Behind the Curtain set. Below the hero the surface is a **light dusty
+  pink** (`--rose-surface #cda9ab`; footer `--rose-deep #c59fa2`) with **deep rose-brown ink**
+  (`--rose-ink #3d2326` = 6.7:1, secondary `--rose-ink-soft #5a3639` = 4.9:1). History: blush +
+  green ink → owner wanted white text → #8f5459 "far too dark" → #ac6f73 → "40% lighter" =
+  #cda9ab, where white text is unreadable (2.1:1), so ink went dark. White text only works
+  at #ac6f73 or darker — say so if asked for white on anything lighter. Green from the floor
   shows up as a soft glow. The owner found the black section and the gold text ugly —
   no black backgrounds below the hero, no gold. Cream `--bg #f5f0e8` on shop/contact.
 - Type: **Poppins** display
@@ -77,10 +79,11 @@ buttons" block at the END of style.css (it overrides the older nav rules) — ke
 The bubble is the SITE-WIDE button language (Oct 2026, owner asked to standardise): channel
 icons, carousel arrows, the thumbnails' play button and the dropdown menus (a tinted bubble
 "gel" pane: dark-rose tint over video so text stays readable, white gel on cream pages) all
-share it. Ink rule: white over video/photos and on the rose surface, green ink (`--green-ink`) on the
-cream shop/contact pages. These
+share it. Ink rule: white over video/photos; rose-brown ink (`--rose-ink`) on the pink surface; green
+ink (`--green-ink`) on the cream shop/contact pages. These
 overrides are in the "One look for the whole site" block at the very end of style.css.
-Footer is a slim one-line strip (26px emblem + copyright) — the owner found the big footer
+Footer is a slim one-line strip (26px emblem + copyright; on phones a 32px hairline with an 18px
+emblem and "All rights reserved." hidden via `.rights`) — the owner found the big footer
 wasted space; don't grow it back.
 
 Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't reintroduce
