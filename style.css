@@ -1737,3 +1737,42 @@ body:has(.sessions) {
     gap: 12px;
   }
 }
+
+/* Masthead matches the section title: same size, tracking and raised treatment.
+   White letters show "raised" through a thin light edge beneath + the same soft shadow. */
+.nav-wordmark,
+.topnav-overlay .nav-wordmark {
+  font-size: clamp(26px, 3.4vw, 38px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+}
+
+.topnav-overlay .nav-wordmark {
+  color: #fff;
+  text-shadow:
+    0 1px 0 rgba(222, 210, 210, 0.95),
+    0 2px 1px rgba(0, 0, 0, 0.22),
+    0 3px 6px rgba(40, 18, 22, 0.28),
+    0 8px 18px rgba(40, 18, 22, 0.2);
+}
+
+.topnav-page .nav-wordmark {
+  color: #000;
+  text-shadow:
+    0 -1px 0 rgba(255, 255, 255, 0.9),
+    0 1px 1px rgba(0, 0, 0, 0.18),
+    0 3px 6px rgba(70, 35, 40, 0.18),
+    0 8px 18px rgba(70, 35, 40, 0.12);
+}
+
+@media (max-width: 720px) {
+  .nav-wordmark,
+  .topnav-overlay .nav-wordmark {
+    font-size: 26px;
+  }
+
+  .topnav .nav-drop-menu {
+    top: 100px;
+  }
+}
