@@ -1027,6 +1027,7 @@ h2,
 .topnav .nav-links > a:hover,
 .topnav .nav-drop-btn:hover,
 .topnav .nav-drop.open .nav-drop-btn {
+  color: #fff;
   background:
     radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.62) 0%, rgba(255, 255, 255, 0.16) 24%, rgba(255, 255, 255, 0) 44%),
     radial-gradient(90% 90% at 72% 88%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0) 55%),
@@ -1116,8 +1117,14 @@ h2,
     width: 38px;
     height: 38px;
     padding: 0;
+    gap: 0;
     justify-content: center;
     flex-shrink: 0;
+  }
+
+  /* The whole row fits on phones, so don't clip the bubbles' glow */
+  .topnav .nav-links {
+    overflow: visible;
   }
 
   .topnav .nav-links > a svg,
@@ -1143,4 +1150,184 @@ h2,
     width: 16px;
     height: 16px;
   }
+}
+
+
+/* ============================================================
+   One look for the whole site: the soap bubble.
+   Over video/photos: white ink. On the blush/cream surfaces: green ink.
+   ============================================================ */
+
+/* Tablet widths still scroll the nav row: give the glow room inside the scroller */
+@media (max-width: 920px) {
+  .topnav .nav-links {
+    padding: 16px 14px;
+    margin: -16px -14px;
+  }
+}
+
+/* Masthead uses the same white as the bubble icons */
+.topnav-overlay .nav-wordmark {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* ---- Bubble buttons below the hero (channel icons, carousel arrows) ---- */
+.chan-icon,
+.sess-arrow {
+  position: relative;
+  isolation: isolate;
+  border: 0;
+  color: var(--green-ink);
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.35) 26%, rgba(255, 255, 255, 0) 46%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0.5) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.8),
+    inset 0 -3px 8px rgba(185, 120, 124, 0.12),
+    0 0 14px rgba(255, 255, 255, 0.55),
+    0 5px 14px rgba(110, 58, 62, 0.14);
+}
+
+/* Play button on the session thumbnails: a white-ink bubble, like the nav over the video */
+.play-badge {
+  isolation: isolate;
+  color: #fff;
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.55) 0%, rgba(255, 255, 255, 0.14) 24%, rgba(255, 255, 255, 0) 44%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.04) 58%, rgba(255, 255, 255, 0.22) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.5),
+    inset 0 -4px 10px rgba(255, 255, 255, 0.12),
+    0 0 22px rgba(255, 255, 255, 0.22),
+    0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.play-badge svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+.sess-media:hover .play-badge {
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.18) 26%, rgba(255, 255, 255, 0) 46%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.1) 55%, rgba(255, 255, 255, 0.3) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.6),
+    0 0 30px rgba(255, 255, 255, 0.38),
+    0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Iridescent rim, shared by every bubble */
+.chan-icon::before,
+.sess-arrow::before,
+.play-badge::before,
+.topnav .nav-drop-menu::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1.5px;
+  background: conic-gradient(from 200deg,
+    rgba(255, 182, 222, 0.9), rgba(176, 214, 255, 0.9), rgba(190, 255, 214, 0.8),
+    rgba(255, 236, 176, 0.9), rgba(255, 182, 222, 0.9));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.8;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.chan-icon:hover,
+.sess-arrow:hover:not(:disabled) {
+  color: var(--green-ink);
+  background:
+    radial-gradient(120% 140% at 28% 18%, rgba(255, 255, 255, 1) 0%, rgba(255, 255, 255, 0.45) 28%, rgba(255, 255, 255, 0) 48%),
+    radial-gradient(closest-side, rgba(255, 255, 255, 0.25) 55%, rgba(255, 255, 255, 0.65) 100%);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.9),
+    0 0 22px rgba(255, 255, 255, 0.8),
+    0 6px 16px rgba(110, 58, 62, 0.16);
+  transform: translateY(-1px) scale(1.05);
+}
+
+/* ---- Dropdown menus: a bigger pane of the same bubble ---- */
+.topnav .nav-drop-menu {
+  isolation: isolate;
+  border: 0;
+  border-radius: 18px;
+  background:
+    radial-gradient(140% 90% at 20% 0%, rgba(255, 255, 255, 0.24) 0%, rgba(255, 255, 255, 0.05) 30%, rgba(255, 255, 255, 0) 55%),
+    rgba(46, 28, 30, 0.72);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.4),
+    inset 0 -6px 16px rgba(255, 255, 255, 0.06),
+    0 0 26px rgba(255, 255, 255, 0.14),
+    0 18px 44px rgba(23, 19, 14, 0.3);
+}
+
+.topnav .nav-drop-menu a {
+  color: #fff;
+  font-weight: 700;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+}
+
+.topnav .nav-drop-menu a:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.topnav .nav-drop-menu a svg {
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.35));
+}
+
+/* Menus on the cream pages: white gel, green ink */
+.topnav-page .nav-drop-menu {
+  background:
+    radial-gradient(140% 90% at 20% 0%, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.5) 40%, rgba(255, 255, 255, 0.3) 70%),
+    rgba(242, 230, 224, 0.75);
+  box-shadow:
+    inset 0 1px 3px rgba(255, 255, 255, 0.9),
+    0 0 22px rgba(255, 255, 255, 0.6),
+    0 16px 40px rgba(110, 58, 62, 0.18);
+}
+
+.topnav-page .nav-drop-menu a {
+  color: var(--green-ink);
+  text-shadow: none;
+}
+
+.topnav-page .nav-drop-menu a:hover {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.topnav-page .nav-drop-menu a svg {
+  filter: none;
+}
+
+/* ---- Footer: a slim strip, not a section ---- */
+.footer {
+  padding: 14px 20px;
+  background: var(--blush-deep);
+}
+
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  max-width: none;
+}
+
+.footer-emblem {
+  width: 26px;
+  height: 26px;
+  margin: 0;
+  box-shadow: none;
+}
+
+.footer p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--green-muted);
 }

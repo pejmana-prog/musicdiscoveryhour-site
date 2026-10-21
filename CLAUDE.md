@@ -70,6 +70,13 @@ soft white glow that brightens on hover/open. White single-colour icons over the
 green ink on the cream pages. No backdrop-filter (it lags over video). Pills with labels on
 desktop, 38px icon-only bubbles on phones. Menus are light cream. This lives in the "Nav
 buttons" block at the END of style.css (it overrides the older nav rules) — keep it last.
+The bubble is the SITE-WIDE button language (Oct 2026, owner asked to standardise): channel
+icons, carousel arrows, the thumbnails' play button and the dropdown menus (a tinted bubble
+"gel" pane: dark-rose tint over video so text stays readable, white gel on cream pages) all
+share it. Ink rule: white over video/photos, green ink (`--green-ink`) on blush/cream. These
+overrides are in the "One look for the whole site" block at the very end of style.css.
+Footer is a slim one-line strip (26px emblem + copyright) — the owner found the big footer
+wasted space; don't grow it back.
 
 Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't reintroduce
 the hover-gap bug); tap-toggle everywhere; fixed sheet under the nav on ≤720px because the
