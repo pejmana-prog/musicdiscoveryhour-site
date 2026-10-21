@@ -296,6 +296,11 @@ img {
   color: var(--ink);
 }
 
+/* Icons that only appear on phones (Home, Contact) */
+.nav-ico-m {
+  display: none;
+}
+
 /* ---- Video Hero ---- */
 .vhero {
   position: relative;
@@ -1075,32 +1080,42 @@ h2,
      font-size: 0 hides the label visually but keeps it as the accessible name. */
   .nav-links {
     justify-content: safe center;
-    gap: 0;
+    gap: 4px;
   }
 
   .nav-drop-btn,
-  .nav-links > a[href*="music.apple.com"] {
+  .nav-links > a {
     font-size: 0;
     gap: 0;
-    padding: 8px 8px;
+    padding: 9px clamp(5px, 2.2vw, 11px);
   }
 
-  .nav-links > a[href="/shop.html"] svg {
-    display: none;
+  .nav-ico-m {
+    display: block;
   }
 
   .nav-drop-btn svg:not(.drop-chevron),
-  .nav-links > a[href*="music.apple.com"] svg {
-    width: 19px;
-    height: 19px;
+  .nav-links > a svg {
+    width: 20px;
+    height: 20px;
   }
 
   .nav-drop-btn .drop-chevron {
     display: none;
   }
 
-  .nav-links > a {
-    padding: 8px 8px;
+}
+
+@media (max-width: 370px) {
+  /* iPhone SE / mini: tighten the icon row so all 8 still fit */
+  .nav-links {
+    gap: 0;
+  }
+
+  .nav-drop-btn svg:not(.drop-chevron),
+  .nav-links > a svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
