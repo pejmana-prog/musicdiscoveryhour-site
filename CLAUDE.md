@@ -94,21 +94,18 @@ Dropdowns: hover-open on desktop with an invisible bridge + 300ms grace (don't r
 the hover-gap bug); tap-toggle everywhere; fixed sheet under the nav on ≤720px because the
 nav row scrolls horizontally there.
 
-## Sessions player (home, right column)
+## Sessions carousel (home)
 
-One `<button class="session-poster">` + hidden `.session-embed` (YouTube nocookie iframe,
-created on first play) and a `.session-list` of `.session-item` buttons carrying
-`data-video/artist/song/thumb/alt` (+ `data-featured` on the first). Clicking an item swaps the
-poster/meta; if the player is already open it swaps the iframe src instead, so there is never
-more than one iframe. Order = newest first; add a new performance by prepending an item,
-moving `data-featured` and the `is-current`/`aria-current` markers to it, and updating the
-featured poster/meta markup (and the `og:image` on all three pages, which uses the featured thumb).
+`<ul class="sess-track">` of `<li class="sess-card">`, newest first. Each card: a
+`.sess-media` button (`data-video` = YouTube id, `data-title`) with the 1280×720 thumb and a
+play bubble, plus a `.sess-text` caption pill (artist + song). Tapping swaps the button for a
+youtube-nocookie iframe in place; starting another card restores the previous one. To add a
+session: prepend a card + its thumb, and point `og:image`/`twitter:image` at the newest thumb.
 
 ## Media recipes
 
-- **Hero loop** (Oct 2026: Raveena "Blissed Out", wide shot 2:27–2:45 of the YouTube master
-  EBrhz3Px0Js, downloaded at 1440p with the DiscoveryClipper backend's yt-dlp + cookies; the
-  earlier Lee Lewis loop came from the 4K master in `~/Documents/Most Recent Lee Lewis Files/`).
+- **Hero loop** (Oct 2026: Raveena "Blissed Out", a wide shot from the YouTube master; source
+  files and download setup live on the owner's Mac — ask the owner / use the desktop session).
   It's a seamless crossfade loop: 18s segment, last 1s xfaded into the first 1s
   (`[S+1..S+18][S..S+1] xfade=fade:duration=1:offset=16` → 17s), cropped to 84% biased up
   (`crop=iw*0.84:ih*0.84:iw*0.08:0`) to drop the burned-in "behind the curtain" script in the
@@ -120,23 +117,31 @@ featured poster/meta markup (and the `og:image` on all three pages, which uses t
 - **Session thumbs** (`assets/session-<artist>.jpg`, 1280×720): the same framing for every
   performance — a clean WIDE shot, performer(s) centred, no title card, badge left in
   (`ffmpeg -ss T -i master -frames:v 1 -vf scale=1280:720:flags=lanczos -q:v 2`). Frames used:
-  Raveena 2:32, GTA 3:05, FOR MIA 1:48, Lee Lewis 1:05. Use the GRADED source: the
-  "Finals For Color Grading_*" files in ~/Documents are ungraded log masters, so grab from the
-  YouTube upload (1080p is enough) or the Lee Lewis 4K master. The YouTube title cards animate artist and song
+  Raveena 2:32, GTA 3:05, FOR MIA 1:48, Lee Lewis 1:05. Use the GRADED source (the
+  YouTube upload at 1080p is enough) — some local masters are ungraded log footage. The YouTube title cards animate artist and song
   separately, so there is no single frame with both — don't use them.
 - **IG grid covers**: the designed cover card is the **very FINAL frame of the first slide**
   of each carousel (the video ends on the cover). A plain `-sseof -0.15 -frames:v 1` seek
   lands a few frames early and misses it — instead decode the tail and keep the last frame:
-  `yt-dlp --playlist-items 1` (cookies from the DiscoveryClipper backend), then
+  download slide 1 (desktop session — needs the owner's local setup), then
   `ffmpeg -sseof -0.6 -i slide1.mp4 -vsync 0 out-%02d.jpg` and use the highest-numbered
   file. Self-host as `assets/ig-N.jpg` — never use IG embed.js (blocked/throttled) and
   never IG's API thumbnail or frame zero (wrong frames).
 
 ## Related but separate
 
-- The DiscoveryClipper app (repo `spyqs/MDPOUR`, at `~/Projects/DiscoveryClipper`) makes the
-  IG clips. Different project — never commit/push it from a session working on this site.
+- The clip-making app is a separate private project. Never commit/push it from a session
+  working on this site.
 - Merch storefront (Fourthwall) is in progress; `shop.html` collects emails until it's live,
   then the Shop links should point at the storefront.
 - Contact email `partnerships@musicdiscoveryhour.com` is a Google Workspace mailbox; its MX
   records live in **Netlify DNS** (not the registrar).
+
+## Security (Oct 2026 pass)
+
+- `_headers`: security headers + a Content-Security-Policy. If you add a new outside
+  resource (script, font, embed, image host), add its origin to the matching CSP directive or
+  the browser will block it. Inline scripts are allowed (`'unsafe-inline'`).
+- `_redirects`: CLAUDE.md / README.md / _headers / _redirects return 404 on the website.
+- This repo is PUBLIC: never commit secrets, local paths, cookies or private-project details.
+- Email anti-spoofing: DMARC is `p=quarantine` (set in Netlify DNS).

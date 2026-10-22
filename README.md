@@ -50,5 +50,5 @@ The site is hosted on **Netlify**, connected to the `main` branch of this reposi
 
 ## Related
 
-- The Instagram clips are made with the DiscoveryClipper app (separate repo).
+- The Instagram clips are made with a separate private app.
 - Merch storefront (Fourthwall) is in progress; `shop.html` collects emails until it is live.
