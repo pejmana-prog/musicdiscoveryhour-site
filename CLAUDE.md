@@ -132,8 +132,10 @@ session: prepend a card + its thumb, and point `og:image`/`twitter:image` at the
 
 - The clip-making app is a separate private project. Never commit/push it from a session
   working on this site.
-- Merch storefront (Fourthwall) is in progress; `shop.html` collects emails until it's live,
-  then the Shop links should point at the storefront.
+- Merch is sold on **Fourthwall** at https://shop.musicdiscoveryhour.com (store is Live since
+  Oct 2026; two AS Colour tees at $45). Every Shop link points to `/collections/all` there, and
+  `/shop` + `/shop.html` 301-redirect to it via `_redirects`. `shop.html` is kept only so the old
+  Netlify Forms email list stays attached; it isn't reachable on the site anymore.
 - Contact email `partnerships@musicdiscoveryhour.com` is a Google Workspace mailbox; its MX
   records live in **Netlify DNS** (not the registrar).
 

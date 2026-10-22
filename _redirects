@@ -1,3 +1,7 @@
+# The shop lives on Fourthwall (shop.musicdiscoveryhour.com); old /shop links forward there
+/shop        https://shop.musicdiscoveryhour.com/collections/all   301!
+/shop.html   https://shop.musicdiscoveryhour.com/collections/all   301!
+
 # Project notes live in the repo for Claude sessions; never serve them on the website
 /CLAUDE.md   /404.html   404!
 /README.md   /404.html   404!
