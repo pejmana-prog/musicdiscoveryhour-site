@@ -146,4 +146,8 @@ session: prepend a card + its thumb, and point `og:image`/`twitter:image` at the
   the browser will block it. Inline scripts are allowed (`'unsafe-inline'`).
 - `_redirects`: CLAUDE.md / README.md / _headers / _redirects return 404 on the website.
 - This repo is PUBLIC: never commit secrets, local paths, cookies or private-project details.
+- Analytics: **Cloudflare Web Analytics** (cookie-less) — the beacon `<script>` sits just before
+  `</body>` on every page; its CSP origins are `static.cloudflareinsights.com` (script) and
+  `cloudflareinsights.com` (connect). New pages need the same snippet. Netlify's "requests"
+  number counts file requests, not visitors — use Cloudflare for visitor counts.
 - Email anti-spoofing: DMARC is `p=quarantine` (set in Netlify DNS).
